@@ -297,8 +297,146 @@ score = [90, 85, 77, 65, 97]
 
 for i in range(5):
  if score[i] >= 80:
- 
+  print(i + 1, "번 학생은 합격입니다.")
 ```
+
+
+### 함수
+* 함수란 특정한 작업을 하나의 단위로 묶어 놓은 것
+* 함수를 사용하면 불필요한 소스코드의 반복을 줄일 수 있다.
+
+* 내장 함수 : 파이썬이 기본적으로 제공하는 함수
+* 사용자 정의 함수 : 개발자가 직접 정의하여 사용할 수 있는 함수
+
+#### global 키워드
+* global 키워드로 변수를 지정하면 해당 함수에서는 지역 변수를 만들지 않고, 함수 바깥에 선언된 변수를 바로 참조하게 된다.
+
+```python
+a = 0
+
+def func():
+ global a
+ a += 1
+ 
+for i in range(10):
+ func()
+
+print(a) # 10
+```
+
+### 여러개의 반환 값
+* 파이썬에서 함수는 여러 개의 반환 값을 가질 수 있다.
+
+```python
+def operator(a,b):
+ add_var = a + b
+ subtract_var = a - b
+ multiply_var = a * b
+ divide_var = a / b
+ return add_var, subtract_var, multiply_var, divide_var
+ 
+a, b, c, d = operator(7, 3)
+print(a, b, c, d)
+````
+
+
+### 람다 표현식
+* 람다 표현식을 이용하면 함수를 간단하게 작성할 수 있다.
+ * 특정한 기능을 수행하는 함수를 한 줄에 작성할 수 있다는 점이 특징이다.
+```python
+def add(a, b):
+ return a + b
+ 
+# 일반적인 add() 메서드 사용
+print(add(3, 7))
+
+# 람다 표현식으로 구현한 add() 메서드
+print((lambda a, b: a + b)(3, 7))
+```
+
+### 실전에서 유용한 표준 라이브러리
+* 내장 함수 : 기본 입출력 함수부터 정렬 함수까지 기본적인 함수
+ * 파이썬 프로그램 작성 시 필수적인 기능
+* itertools : 파이썬에서 반복되는 형태의 데이터를 처리하기 위한 유용한 기능
+ * 특히 순열과 조합 라이브러리는 코딩 테스트에서 자주 사용
+* heapq : 힙(Heap) 자료구조를 제공한다.
+ * 일반적으로 우선순위 큐 기능을 구현하기 위해 사용
+* bisect : 이진 탐색(Binary Search) 기능을 제공
+* collections : 덱(deque), 카운터(Counter) 등의 유용한 자료구조를 포함
+* math : 필수적인 수학적 기능을 제공
+ * 팩토리얼, 제곱근, 최대공약소(GCD), 삼각함수 관련 함수부터 파이(pi)와 같은 상수를 포함
+
+
+```python
+# sum()
+result = sum([1, 2, 3, 4, 5])
+print(result) # 15
+
+# min(), max()
+min_result = min(7, 3, 5, 2)
+max_result = max(7, 3, 5, 2)
+print(min_result, max_result) # 2 7
+
+# eval()
+result = eval("(3+5)*7)
+print(result)
+```
+
+### 정렬 내장함수 sorted()
+```python
+# sorted()
+result = sorted([9, 1, 8, 5, 4])
+reverse_result = sorted([9, 1, 8, 5, 4], reverse = True)
+
+# sorted() with key
+array = [('홍길동', 35), ('이순신', 75), ('아무개', 50)]
+result = sorted(array, key=lambda x: x[1], reverse=True)
+```
+
+
+### 순열과 조합
+* 모든 경우의 수를 고려해야 할 때 어떤 라이브러리를 효과적으로 사용할 수 있을까
+* 순열 : 서로 다른 N개에서 서로 다른 R개를 선택하여 일렬로 나열하는것
+* 조합 : 서로 다른 N개에서 순서에 상관 없이 서로 다른 R개를 선택하는것
+
+
+#### 순열
+```python
+# 순열
+
+from itertools import permutations
+
+data = ['A', 'B', 'C'] # 데이터 준비
+
+result = list(permutations(data, 3)) # 모든 순열 구하기
+print(result)
+```
+
+#### 조합
+```python
+# 조합
+
+from itertools import combinations
+
+data = ['A', 'B', 'C'] # 데이터 준비
+
+result = list(combinations(data, 2)) # 모든 조합 구하기
+print(result)
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
